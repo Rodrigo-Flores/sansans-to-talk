@@ -1,4 +1,4 @@
-"""STT URL Configuration
+"""App URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', EventList.as_view(), name='event_list'),
+    path('event_create/', EventCreate.as_view(), name='event_create'),
+    path('event_update/<int:pk>/', EventUpdate.as_view(), name='event_update'),
+    path('event_delete/<int:pk>/', EventDelete.as_view(), name='event_delete'),
 ]
