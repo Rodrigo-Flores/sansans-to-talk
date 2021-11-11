@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Credentials
-.sender_email.com
+.sender_email.json
