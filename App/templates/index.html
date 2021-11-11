@@ -1,15 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Events</title>
+        
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap' rel='stylesheet' type='text/css'>
+
+    <style>
+        html {
+            font-family: 'helvetica neue', helvetica, arial, sans-serif;
+        }
+
+        #events {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid black;
+            width: 100%;
+
+        }
+  
+        #events td, #events th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-family: 'Poppins', cursive;
+        }
+
+        #events tr:nth-child(even){background-color: #f2f2f2;}
+
+        #events tr:hover {background-color: #ddd;}
+
+        #events th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+        }
+
+        #events-new {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            float: right;
+        }
+
+    </style>
+
 </head>
 <body>
     {% block body %}
-        <h1>List</h1>
-        <table>
+        <h1>Even List</h1>
+        <table id="events">
+            <button id="events-new"><a href="{% url 'event_create' %}">NEW</a></button>
             <thead>
                 <tr>
                     <th>Name</th>
