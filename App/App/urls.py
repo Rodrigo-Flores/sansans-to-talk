@@ -16,12 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete
+from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete, ProfileCreate, ProfileUpdate, Home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', EventList.as_view(), name='event_list'),
+    #! Events urls
+    path('events/', EventList.as_view(), name='event_list'), #? work in this path
+    path('', Home.as_view(), name='home'), #? Change deafult path to other more user friendly
     path('event_create/', EventCreate.as_view(), name='event_create'),
     path('event_update/<int:pk>/', EventUpdate.as_view(), name='event_update'),
     path('event_delete/<int:pk>/', EventDelete.as_view(), name='event_delete'),
+
+    #! Profiles urls
+    path('profile_create/', ProfileCreate.as_view(), name='profile_create'),
+    path('profile_update/<int:pk>/', ProfileUpdate.as_view(), name='profile_update'),
+
 ]
