@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW MAIN INDEX</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Raleway:300");
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            box-sizing: content-box;
+            position: relative;
+            bottom: 150px;
+            font-size: 2em;
+            color: #fff;
+            text-align: center;
+        }
+
+        body{
+            display: flex;
+            height: 100vh;
+            background: black;
+            align-items: center;
+            justify-content: center;
+            /* background-image: url("https://w.wallhaven.cc/full/nz/wallhaven-nzxlxj.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: blur(5px); */
+        }
+
+        button{
+            position: relative;
+            left: -200px;
+            height: 60px;
+            width: 200px;
+            border: none;
+            outline: none;
+            color: white;
+            background: #111;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        button:before{
+            position: absolute;
+            content: '';
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: calc(100% + 4px);
+            width: calc(100% + 4px);
+            border-radius: 5px;
+            z-index: -1;
+            opacity: 0;
+            filter: blur(5px);
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            transition: opacity .3s ease-in-out;
+            animation: animate 20s linear infinite;
+        }
+
+        button:hover:before{
+            opacity: 1;
+        }
+
+        button:hover:active{
+            background: none;
+        }
+
+        button:hover:active:before{
+            filter: blur(2px)
+        }
+
+        @keyframes animate {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        
+    </style>
+
+</head>
+<body>
+    
+    <h1>Welcome to Sansans To Talk</h1>
+    <form action="{% url 'event_list' %}">
+        <button type="submit">Events</button>
+    </form>
+    <form action="{% url 'event_create' %}">
+        <button type="submit">Create Event</button>
+    </form>
+    <!-- <button ><a href="{% url 'event_list' %}">View Events List</a></button> -->
+
+</body>
+</html>

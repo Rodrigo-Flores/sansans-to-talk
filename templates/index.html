@@ -67,7 +67,6 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Subject</th>
                     <th>Description</th>
                     <th>Date</th>
                     <th>Time</th>
@@ -78,7 +77,6 @@
                 {% for event in object_list %}
                 <tr>
                     <td>{{ event.event_name }}</td>
-                    <td>{{ event.event_subject }}</td>
                     <td>{{ event.event_description }}</td>
                     <td>{{ event.event_date }}</td>
                     <td>{{ event.event_time }}</td>
