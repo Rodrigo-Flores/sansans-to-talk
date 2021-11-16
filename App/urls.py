@@ -15,20 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.views import LoginView, LogoutView
 
-from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete, ProfileCreate, ProfileUpdate, Home
+from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete, Home, register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', Home.as_view(), name='home'), #? Change deafult path to other more user friendly
+    
     #! Events urls
     path('events/', EventList.as_view(), name='event_list'), #? work in this path
-    path('', Home.as_view(), name='home'), #? Change deafult path to other more user friendly
     path('event_create/', EventCreate.as_view(), name='event_create'),
     path('event_update/<int:pk>/', EventUpdate.as_view(), name='event_update'),
     path('event_delete/<int:pk>/', EventDelete.as_view(), name='event_delete'),
 
-    #! Profiles urls
-    path('profile_create/', ProfileCreate.as_view(), name='profile_create'),
-    path('profile_update/<int:pk>/', ProfileUpdate.as_view(), name='profile_update'),
+    #! User profile urls
+    path('register/', register, name='register'),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout')
 
 ]

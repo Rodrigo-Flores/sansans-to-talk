@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 class Events(models.Model):
     event_id = models.AutoField(primary_key=True)
     event_name = models.CharField(max_length=100)
@@ -8,18 +10,9 @@ class Events(models.Model):
 
     __str__ = lambda self: self.event_name
 
-class Profiles(models.Model):
-    profile_id = models.AutoField(primary_key=True)
-    profile_name = models.CharField(max_length=100)
-    profile_email = models.EmailField()
+#! User profile model
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.EmailField(max_length=100)
 
-    __str__ = lambda self: self.profile_name
-
-class Attendance(models.Model):
-    attendance_id = models.AutoField(primary_key=True)
-    attendance_event_id = models.ForeignKey(Events, null=False, blank=False, on_delete=models.CASCADE) # WARNING
-    attendance_profile_id = models.ForeignKey(Profiles, null=False, blank=False, on_delete=models.CASCADE) # WARNING
-    attendance_date = models.DateTimeField(auto_now_add=True)
-    attendance_status = models.BooleanField(default=True)
-
-    __str__ = lambda self: self.attendance_profile_id
+    __str__ = lambda self: self.user.username
