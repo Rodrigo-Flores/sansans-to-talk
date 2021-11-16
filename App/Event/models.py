@@ -13,6 +13,5 @@ class Events(models.Model):
 #! User profile model
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField(max_length=100)
 
     __str__ = lambda self: self.user.username

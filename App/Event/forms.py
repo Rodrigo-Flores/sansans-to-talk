@@ -17,12 +17,11 @@ class EventForm(forms.ModelForm):
         fields = '__all__'
 
 class UserRegistrationForm(UserCreationForm):
-    user = forms.CharField(label='Username', max_length=50)
     email = forms.EmailField(required=True)
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password Confirmation', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ['user', 'email', 'password1', 'password2']
-        help_texts = {i : 0 for i in fields}
+        fields = ['username','email', 'password1', 'password2']
+        help_texts = {i : "" for i in fields}

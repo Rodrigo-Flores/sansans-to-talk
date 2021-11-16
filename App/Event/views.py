@@ -40,7 +40,7 @@ def register(request):
             form.save()
             messages.success(request, 'User created successfully')
 
-            return redirect('index')
+            return redirect('event_list')
             
     else:
         form = UserRegistrationForm()

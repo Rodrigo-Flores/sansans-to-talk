@@ -9,16 +9,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 
-    <title>NEW MAIN INDEX</title>
+    {% block title %}<title>NEW MAIN INDEX</title> {% endblock title %}
+
 </head>
 <body>
     {% block nav %}
         <ul id="nav">
             <li>{% block nav-home %}<a href="{% url 'home' %}">Home</a>{% endblock %}</li>
             <li>{% block nav-about %}<a href="{% url 'event_list' %}">Event List</a>{% endblock %}</li>
-            <li>{% block nav-contact %}<a href="{% url 'event_create' %}">Create Event</a>{% endblock %}</li>
-            <li>{% block nav-login %}<a href="{% url 'login' %}">Login</a>{% endblock %}</li>
-            <li>{% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}</li>
+            <!-- <li>{% block nav-create %}<a href="{% url 'event_create' %}">Create Event</a>{% endblock %}</li> -->
+            <li>{% block nav-login %}<a href="{% url 'login' %}">Sign In</a>{% endblock %}</li>
+            <li>{% block nav-contact %}<a href="{% url 'register' %}">Sign Up</a>{% endblock %}</li>
+            <!-- <li>{% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}</li> -->
         </ul>
     {% endblock %}
     {% block body %}
