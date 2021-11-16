@@ -16,23 +16,31 @@
     {% block nav %}
         <ul id="nav">
             <li>{% block nav-home %}<a href="{% url 'home' %}">Home</a>{% endblock %}</li>
-            <li>{% block nav-about %}<a href="{% url 'event_list' %}">Event List</a>{% endblock %}</li>
+            {% if request.user.is_authenticated %}
+                <li>{% block nav-about %}<a href="{% url 'event_list' %}">Event List</a>{% endblock %}</li>
+                <li>{% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}</li>
+            {% else %}
+                <li>{% block nav-login %}<a href="{% url 'login' %}">Sign In</a>{% endblock %}</li>
+                <li>{% block nav-contact %}<a href="{% url 'register' %}">Sign Up</a>{% endblock %}</li>
+            {% endif %}
             <!-- <li>{% block nav-create %}<a href="{% url 'event_create' %}">Create Event</a>{% endblock %}</li> -->
-            <li>{% block nav-login %}<a href="{% url 'login' %}">Sign In</a>{% endblock %}</li>
-            <li>{% block nav-contact %}<a href="{% url 'register' %}">Sign Up</a>{% endblock %}</li>
-            <!-- <li>{% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}</li> -->
         </ul>
     {% endblock %}
     {% block body %}
     
     <h1>Welcome to Sansans To Talk</h1>
 
-    <form action="{% url 'event_list' %}">
-        <button type="submit">Events</button>
-    </form>
-    <form action="{% url 'event_create' %}">
-        <button type="submit">Create Event</button>
-    </form>
+    {% if request.user.is_authenticated %}
+
+        <form action="{% url 'event_list' %}">
+            <button type="submit">Events</button>
+        </form>
+        <form action="{% url 'event_create' %}">
+            <button type="submit">Create Event</button>
+        </form>
+    {% else %}
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod consectetur quis repudiandae vero vitae eveniet. Maiores quia nisi minima saepe quam minus rerum, porro eveniet ullam quae, harum ducimus delectus.</p>
+    {% endif %}
 
     {% endblock %}
 

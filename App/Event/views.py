@@ -39,7 +39,6 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'User created successfully')
-
             return redirect('event_list')
             
     else:
