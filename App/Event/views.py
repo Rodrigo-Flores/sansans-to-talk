@@ -1,17 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
-from .models import Events, Profiles, Attendance
-from .form_event import EventForm
+from django.contrib import messages
+from django.contrib.auth.models import User
+from .models import Events
+from .forms import EventForm, UserRegistrationForm
 
 class Home(ListView):
     model = Events
-    template_name = 'main_index.html'
+    template_name = 'index.html'
 
 #! Events views
 class EventList(ListView):
     model = Events
-    template_name = 'index.html'
+    template_name = 'event_list.html'
 
 class EventCreate(CreateView):
     model = Events
@@ -30,24 +32,25 @@ class EventUpdate(UpdateView):
     template_name = 'manage_event.html'
     success_url = reverse_lazy('event_list')
 
-#! Profiles views
-class ProfileList(ListView):
-    model =  Profiles
-    template_name = 'user_profile.html'
+#! User profile views
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'User created successfully')
+            return redirect('login')
+            
+    else:
+        form = UserRegistrationForm()
 
-class ProfileCreate(CreateView):
-    model = Profiles
-    form_class = EventForm
-    template_name = 'manage_user.html'
-    success_url = reverse_lazy('event_list')
+    return render(request, 'register.html', {'form':form})
 
-# class ProfileDelete(DeleteView):
-#     model = Profiles
-#     template_name = 'delete_confirmation.html'
-#     success_url = reverse_lazy('event_list')
-
-class ProfileUpdate(UpdateView):
-    model = Profiles
-    form_class = EventForm
-    template_name = 'manage_user.html'
-    success_url = reverse_lazy('event_list')
+def profile(request, username=None):
+    current_user = request.user
+    if username and username != current_user.username:
+        user = User.objects.get(username=username)
+    else:
+        user = current_user
+    return render(request, 'profile.html', {'user':user})

@@ -1,89 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Events</title>
-        
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"> -->
 
-    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/event_list.css' %}">
 
-    <style>
-        html {
-            font-family: 'helvetica neue', helvetica, arial, sans-serif;
-        }
 
-        #events {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            border: 1px solid black;
-            width: 100%;
-
-        }
-  
-        #events td, #events th {
-            border: 1px solid #ddd;
-            padding: 8px;
-            font-family: 'Poppins', cursive;
-        }
-
-        #events tr:nth-child(even){background-color: #f2f2f2;}
-
-        #events tr:hover {background-color: #ddd;}
-
-        #events th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #04AA6D;
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            font-size: large;
-        }
-
-        #events-new {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            float: right;
-        }
-
-    </style>
+    {% block title %}<title>Home</title> {% endblock title %}
 
 </head>
 <body>
+    {% block nav %}
+        <div class="topnav">
+            {% block nav-home %}<a class="active" href="{% url 'home' %}">Home</a>{% endblock %}
+
+            {% if request.user.is_authenticated %}
+                {% block nav-profile %}<a id="topnav-profile" href="{% url 'profile' user.username %}">Profile</a>{% endblock %}
+                {% block nav-about %}<a href="{% url 'event_list' %}">Event List</a>{% endblock %}
+                {% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}
+
+            {% else %}
+                {% block nav-login %}<a href="{% url 'login' %}">Sign In</a>{% endblock %}
+                {% block nav-contact %}<a href="{% url 'register' %}">Sign Up</a>{% endblock %}
+
+            {% endif %}
+            <!-- <li>{% block nav-create %}<a href="{% url 'event_create' %}">Create Event</a>{% endblock %}</li> -->
+        </div>
+    {% endblock %}
     {% block body %}
-        <h1>Even List</h1>
-        <table id="events">
-            <button id="events-new"><a href="{% url 'event_create' %}">NEW</a></button>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>OPTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for event in object_list %}
-                <tr>
-                    <td>{{ event.event_name }}</td>
-                    <td>{{ event.event_description }}</td>
-                    <td>{{ event.event_date }}</td>
-                    <td>{{ event.event_time }}</td>
-                    <td><a href="{% url 'event_update' event.event_id %}">Edit</a> <a href="{% url 'event_delete' event.event_id %}">Delete</a></td>
-                </tr>
-                {% endfor %}
-        </table>
-    {% endblock body %}
+    
+        <h1>Welcome to Sansans To Talk</h1>
+
+        {% if request.user.is_authenticated %}
+            <div class="home">
+                <div>
+                    <a id="home-btn_1" href="{% url 'event_list' %}">Event List</a>
+                    <a id="home-btn_2" href="{% url 'event_create' %}">Create Event</a>
+                </div>
+            </div>
+
+        {% else %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod consectetur quis repudiandae vero vitae eveniet. Maiores quia nisi minima saepe quam minus rerum, porro eveniet ullam quae, harum ducimus delectus.</p>
+        
+        {% endif %}
+
+    {% endblock %}
+
 </body>
 </html>

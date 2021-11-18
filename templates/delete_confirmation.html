@@ -1,4 +1,7 @@
+{% extends 'index.html' %}
+{% block title %}<title>Delete Confirmation</title>{% endblock title %}
 
+{% block body %}
 <form method="post">
     {% csrf_token %}
     <h1>Are you sure you want to delete the event "{{ object }}"?</h1>
@@ -7,3 +10,4 @@
 
     <a href="{% url 'event_list' %}">Cancel</a>
 </form>
+{% endblock body %}

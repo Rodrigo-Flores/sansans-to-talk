@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block title %}<title>Event List</title>{% endblock title %}
+{% block body %}
+    <h1>Even List</h1>
+        <table id="events">
+            <button id="events-new"><a href="{% url 'event_create' %}">NEW</a></button>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>OPTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in object_list %}
+                <tr>
+                    <td>{{ event.event_name }}</td>
+                    <td>{{ event.event_description }}</td>
+                    <td>{{ event.event_date }}</td>
+                    <td>{{ event.event_time }}</td>
+                    <td><a href="{% url 'event_update' event.event_id %}">Edit</a> <a href="{% url 'event_delete' event.event_id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+        </table>
+{% endblock body%}

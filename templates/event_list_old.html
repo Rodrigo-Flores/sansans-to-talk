@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Events</title>
+        
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/event_list.css' %}"> -->
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type='text/css' href="{% static 'css/event_list.css' %}">
+
+
+</head>
+<body>
+    {% block body %}
+        <h1>Even List</h1>
+        <table id="events">
+            <button id="events-new"><a href="{% url 'event_create' %}">NEW</a></button>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>OPTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in object_list %}
+                <tr>
+                    <td>{{ event.event_name }}</td>
+                    <td>{{ event.event_description }}</td>
+                    <td>{{ event.event_date }}</td>
+                    <td>{{ event.event_time }}</td>
+                    <td><a href="{% url 'event_update' event.event_id %}">Edit</a> <a href="{% url 'event_delete' event.event_id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+        </table>
+    {% endblock body %}
+</body>
+</html>
