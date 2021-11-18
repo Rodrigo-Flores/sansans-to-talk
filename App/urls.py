@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 
-from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete, Home, register
+from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete, Home, register, profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,6 +32,6 @@ urlpatterns = [
     #! User profile urls
     path('register/', register, name='register'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout')
-
+    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
+    path('profile/<str:username>', profile, name='profile'),
 ]

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.models import User
 from .models import Events
 from .forms import EventForm, UserRegistrationForm
 
@@ -39,9 +40,17 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'User created successfully')
-            return redirect('event_list')
+            return redirect('login')
             
     else:
         form = UserRegistrationForm()
 
     return render(request, 'register.html', {'form':form})
+
+def profile(request, username=None):
+    current_user = request.user
+    if username and username != current_user.username:
+        user = User.objects.get(username=username)
+    else:
+        user = current_user
+    return render(request, 'profile.html', {'user':user})

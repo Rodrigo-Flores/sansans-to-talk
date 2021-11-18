@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <!-- <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"> -->
 
-    {% block title %}<title>NEW MAIN INDEX</title> {% endblock title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/event_list.css' %}">
+
+
+    {% block title %}<title>Home</title> {% endblock title %}
 
 </head>
 <body>
     {% block nav %}
-        <ul id="nav">
-            <li>{% block nav-home %}<a href="{% url 'home' %}">Home</a>{% endblock %}</li>
+        <div class="topnav">
+            {% block nav-home %}<a class="active" href="{% url 'home' %}">Home</a>{% endblock %}
+
             {% if request.user.is_authenticated %}
-                <li>{% block nav-about %}<a href="{% url 'event_list' %}">Event List</a>{% endblock %}</li>
-                <li>{% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}</li>
+                {% block nav-profile %}<a id="topnav-profile" href="{% url 'profile' user.username %}">Profile</a>{% endblock %}
+                {% block nav-about %}<a href="{% url 'event_list' %}">Event List</a>{% endblock %}
+                {% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}
+
             {% else %}
-                <li>{% block nav-login %}<a href="{% url 'login' %}">Sign In</a>{% endblock %}</li>
-                <li>{% block nav-contact %}<a href="{% url 'register' %}">Sign Up</a>{% endblock %}</li>
+                {% block nav-login %}<a href="{% url 'login' %}">Sign In</a>{% endblock %}
+                {% block nav-contact %}<a href="{% url 'register' %}">Sign Up</a>{% endblock %}
+
             {% endif %}
             <!-- <li>{% block nav-create %}<a href="{% url 'event_create' %}">Create Event</a>{% endblock %}</li> -->
-        </ul>
+        </div>
     {% endblock %}
     {% block body %}
     
-    <h1>Welcome to Sansans To Talk</h1>
+        <h1>Welcome to Sansans To Talk</h1>
 
-    {% if request.user.is_authenticated %}
+        {% if request.user.is_authenticated %}
+            <div class="home">
+                <div>
+                    <a id="home-btn_1" href="{% url 'event_list' %}">Event List</a>
+                    <a id="home-btn_2" href="{% url 'event_create' %}">Create Event</a>
+                </div>
+            </div>
 
-        <form action="{% url 'event_list' %}">
-            <button type="submit">Events</button>
-        </form>
-        <form action="{% url 'event_create' %}">
-            <button type="submit">Create Event</button>
-        </form>
-    {% else %}
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod consectetur quis repudiandae vero vitae eveniet. Maiores quia nisi minima saepe quam minus rerum, porro eveniet ullam quae, harum ducimus delectus.</p>
-    {% endif %}
+        {% else %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod consectetur quis repudiandae vero vitae eveniet. Maiores quia nisi minima saepe quam minus rerum, porro eveniet ullam quae, harum ducimus delectus.</p>
+        
+        {% endif %}
 
     {% endblock %}
 
