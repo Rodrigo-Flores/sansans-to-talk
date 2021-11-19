@@ -23,7 +23,7 @@
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
-    background-color: #7700ee;
+    background-color: #ff3333;
     color: white;
 }
 
@@ -35,6 +35,12 @@ h1 {
     text-align: center;
 }
 
+.homeAuthenticated {
+  margin: auto;
+  width: 50%;
+  border: 3px solid #7700ee;
+  padding: 10px;
+}
 #home-btn_1, #home-btn_2 {
   appearance: none;
   background-color: #2ea44f;
