@@ -10,10 +10,10 @@ from .forms import EventForm, UserRegistrationForm
 def Home(request):
     events = Events.objects.all()
 
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'events':events})
 
 #! Events views
-# @login_required #! to add this, the view must be a function, not a class
+@login_required
 def EventList(request):
     events = Events.objects.all()
     context = {
@@ -36,13 +36,7 @@ def EventCreate(request):
 
     return render(request, 'objects/manage_event.html', {'form':form})
 
-# @login_required #! to add this, the view must be a function, not a class
-# def EventDelete(request, event_id):
-#     events = Events.objects.get(event_id=event_id)
-#     events.delete()
-
-#     return redirect('event_list')
-
+@login_required
 def EventDelete(request, event_id=None):
     events = Events.objects.get(event_id=event_id)
 
@@ -55,7 +49,7 @@ def EventDelete(request, event_id=None):
     
     # return render(request, 'objects/delete_confirmation.html')
 
-# @login_required #! to add this, the view must be a function, not a class
+@login_required
 def EventUpdate(request, event_id):
     events = Events.objects.get(event_id=event_id)
 
