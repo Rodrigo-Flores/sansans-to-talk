@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends '../index.html'%}
 {% block title %}<title>Event List</title>{% endblock title %}
 {% block body %}
     <h1>Even List</h1>
@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for event in object_list %}
+                {% for event in events %}
                 <tr>
                     <td>{{ event.event_name }}</td>
                     <td>{{ event.event_description }}</td>
