@@ -8,6 +8,7 @@
 #events th {
   border: 1px solid #ddd;
   padding: 8px;
+  overflow: hidden;
 }
 
 #events tr:nth-child(even) {
@@ -38,4 +39,27 @@
   margin: 4px 2px;
   cursor: pointer;
   float: right;
+}
+
+#options {
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#options-btn {
+  background-color: #8d0404;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: flexbox;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  flex-direction: column;
 }

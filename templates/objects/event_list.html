@@ -10,7 +10,7 @@
                     <th>Description</th>
                     <th>Date</th>
                     <th>Time</th>
-                    <th>OPTION</th>
+                    <th id="options">OPTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +20,11 @@
                     <td>{{ event.event_description }}</td>
                     <td>{{ event.event_date }}</td>
                     <td>{{ event.event_time }}</td>
-                    <td><a href="{% url 'event_update' event.event_id %}">Edit</a> <a href="{% url 'event_delete' event.event_id %}">Delete</a></td>
+                    <td id="options">
+                        <a id="options-btn" href="{% url 'event_update' event.event_id %}">Edit</a>
+                        <a id="options-btn" href="{% url 'event_delete' event.event_id %}">Delete</a>
+                        <a id="options-btn" href="{% url 'event_detail' event.event_id %}">Details</a>
+                </td>
                 </tr>
                 {% endfor %}
         </table>

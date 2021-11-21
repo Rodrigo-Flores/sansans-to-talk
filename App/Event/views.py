@@ -65,6 +65,13 @@ def EventUpdate(request, event_id):
 
     return render(request, 'objects/manage_event.html', {'form':form})
 
+def EventDetail(request, event_id):
+    events = Events.objects.get(event_id=event_id)
+    context = {
+        'events':events
+    }
+    return render(request, 'objects/event_detail.html', context)
+
 #! User profile views
 def register(request):
     if request.method == 'POST':
