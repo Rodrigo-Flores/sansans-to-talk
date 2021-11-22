@@ -2,7 +2,10 @@
 {% block title %} <title>{{ events.event_name }}</title> {% endblock %}
 
 {% block body %}
-    <div class="profile">
+    <div>
+        <a id="meeting" href="https://meet.google.com/new/" target="_blanck">Start Meeting</a>
+    </div>
+    <div class="event">
         <h2><b>{{ events.event_name }}</b></h2>
         <ul>
             <li>{{ events.event_description }}</li>
