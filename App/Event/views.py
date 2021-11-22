@@ -89,9 +89,10 @@ def register(request):
 
 @login_required
 def profile(request, username=None):
+    events = Events.objects.all()
     current_user = request.user
     if username and username != current_user.username:
         user = User.objects.get(username=username)
     else:
         user = current_user
-    return render(request, 'social/profile.html', {'user':user})
+    return render(request, 'social/profile.html', {'user':user, 'events':events})

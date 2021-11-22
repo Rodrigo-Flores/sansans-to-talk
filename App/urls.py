@@ -21,7 +21,7 @@ from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete, Ho
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Home, name='home'), #? Change deafult path to other more user friendly
+    path('', Home, name='home'), #? Add new path with metada redirect to home
     
     #! Events urls
     path('events/', EventList, name='event_list'), #? work in this path
@@ -33,6 +33,6 @@ urlpatterns = [
     #! User profile urls
     path('register/', register, name='register'),
     path('login/', LoginView.as_view(template_name='social/login.html'), name='login'),
-    path('/', LogoutView.as_view(template_name='index.html'), name='logout'),
+    path('home/', LogoutView.as_view(template_name='index.html'), name='logout'),
     path('profile/<str:username>', profile, name='profile'),
 ]

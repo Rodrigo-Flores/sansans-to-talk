@@ -2,7 +2,49 @@
 {% block title %} <title>{{ user.username }}</title> {% endblock %}
 
 {% block body %}
+    <div class="title">
+        <h1 class="title-main">Hello {{ user.username }}. This is your data.</h1>
+        <a id="meeting" href="https://meet.google.com/new/" target="_blanck">Start Event</a>
+    </div>
+
     <div class="profile">
-        <h2>{{ user.username }}</h2>
+        <table>
+            <tr>
+              <th>Name:</th>
+              <td>{{ user.first_name }}</td>
+            </tr>
+            <tr>
+              <th>Last Name:</th>
+              <td>{{ user.last_name }}</td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Creation Date:</th>
+                <td>{{ user.date_joined }}</td>
+            </tr>
+          </table>
+    </div>
+
+    <div>
+        <h2>Your Events</h2>
+        <table>
+            <tr>
+                <th>Event ID</th>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Event Time</th>
+            </tr>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.event_id }}</td>
+                    <td>{{ event.event_name }}</td>
+                    <td>{{ event.event_date }}</td>
+                    <td>{{ event.event_time }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}

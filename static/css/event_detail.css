@@ -1,15 +1,29 @@
-#meeting{
-    background-color: #8d0404;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: flexbox;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    float: right;
-    position: relative;
-    flex-direction: column;
-  }
+.title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.title main {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  width: max-content;
+
+}
+
+#meeting {
+  background-color: #ff3333;
+  color: white;
+  padding: 1em 1em;
+  text-align: center;
+  text-decoration: none;
+  display: flexbox;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  margin-top: -4em;
+  margin-right: 10em;
+}
