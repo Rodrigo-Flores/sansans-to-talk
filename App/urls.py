@@ -17,21 +17,22 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 
-from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete, Home, register, profile
+from App.Event.views import EventList, EventCreate, EventUpdate, EventDelete, Home, register, profile, EventDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Home.as_view(), name='home'), #? Change deafult path to other more user friendly
+    path('', Home, name='home'), #? Add new path with metada redirect to home
     
     #! Events urls
-    path('events/', EventList.as_view(), name='event_list'), #? work in this path
-    path('event_create/', EventCreate.as_view(), name='event_create'),
-    path('event_update/<int:pk>/', EventUpdate.as_view(), name='event_update'),
-    path('event_delete/<int:pk>/', EventDelete.as_view(), name='event_delete'),
+    path('events/', EventList, name='event_list'), #? work in this path
+    path('event_create/', EventCreate, name='event_create'),
+    path('event_update/<str:event_id>/', EventUpdate, name='event_update'),
+    path('event_delete/<str:event_id>/', EventDelete, name='event_delete'),
+    path('event_detail/<str:event_id>/', EventDetail, name='event_detail'),
 
     #! User profile urls
     path('register/', register, name='register'),
-    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
+    path('login/', LoginView.as_view(template_name='social/login.html'), name='login'),
+    path('home/', LogoutView.as_view(template_name='index.html'), name='logout'),
     path('profile/<str:username>', profile, name='profile'),
 ]

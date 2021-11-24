@@ -4,7 +4,7 @@
 {% block body %}
 <form method="post">
     {% csrf_token %}
-    <h1>Are you sure you want to delete the event "{{ object }}"?</h1>
+    <h1>Are you sure you want to delete the event "{{ events.event_name }}"?</h1>
 
     <button type="submit" name="button">Confirm</button>
 

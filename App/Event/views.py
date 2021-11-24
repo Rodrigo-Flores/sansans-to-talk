@@ -3,34 +3,74 @@ from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from .models import Events
 from .forms import EventForm, UserRegistrationForm
 
-class Home(ListView):
-    model = Events
-    template_name = 'index.html'
+def Home(request):
+    events = Events.objects.all()
+
+    return render(request, 'index.html', {'events':events})
 
 #! Events views
-class EventList(ListView):
-    model = Events
-    template_name = 'event_list.html'
+@login_required
+def EventList(request):
+    events = Events.objects.all()
+    context = {
+        'events':events
+    }
 
-class EventCreate(CreateView):
-    model = Events
-    form_class = EventForm
-    template_name = 'manage_event.html'
-    success_url = reverse_lazy('event_list')
+    return render(request, 'objects/event_list.html', context)
+@login_required
+def EventCreate(request):
+    if request.method == 'GET':
+        form = EventForm()
 
-class EventDelete(DeleteView):
-    model = Events
-    template_name = 'delete_confirmation.html'
-    success_url = reverse_lazy('event_list')
+    elif request.method == 'POST':
+        form = EventForm(request.POST)
 
-class EventUpdate(UpdateView):
-    model = Events
-    form_class = EventForm
-    template_name = 'manage_event.html'
-    success_url = reverse_lazy('event_list')
+    if form.is_valid():
+        form.save()
+
+        return redirect('event_list')
+
+    return render(request, 'objects/manage_event.html', {'form':form})
+
+@login_required
+def EventDelete(request, event_id=None):
+    events = Events.objects.get(event_id=event_id)
+
+    if request.method == 'GET':
+        return render(request, 'objects/delete_confirmation.html', {'events':events})
+
+    elif request.method == 'POST':
+        events.delete()
+        return redirect('event_list')
+    
+    # return render(request, 'objects/delete_confirmation.html')
+
+@login_required
+def EventUpdate(request, event_id):
+    events = Events.objects.get(event_id=event_id)
+
+    if request.method == 'GET':
+        form = EventForm(instance=events)
+
+    elif request.method == 'POST':
+        form = EventForm(request.POST, instance=events)
+        if form.is_valid():
+            form.save()
+
+            return redirect('event_list')
+
+    return render(request, 'objects/manage_event.html', {'form':form})
+
+def EventDetail(request, event_id):
+    events = Events.objects.get(event_id=event_id)
+    context = {
+        'events':events
+    }
+    return render(request, 'objects/event_detail.html', context)
 
 #! User profile views
 def register(request):
@@ -45,12 +85,14 @@ def register(request):
     else:
         form = UserRegistrationForm()
 
-    return render(request, 'register.html', {'form':form})
+    return render(request, 'social/register.html', {'form':form})
 
+@login_required
 def profile(request, username=None):
+    events = Events.objects.all()
     current_user = request.user
     if username and username != current_user.username:
         user = User.objects.get(username=username)
     else:
         user = current_user
-    return render(request, 'profile.html', {'user':user})
+    return render(request, 'social/profile.html', {'user':user, 'events':events})
