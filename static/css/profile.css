@@ -1,0 +1,25 @@
+.profile {
+    width: max-content;
+    margin: 0 auto;
+    padding: 0;
+    border: 1px solid rgb(17, 17, 17);
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 5px #ccc;
+
+}
+
+.profile td,
+.profile th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.profile tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.profile tr:hover {
+  background-color: #ddd;
+}

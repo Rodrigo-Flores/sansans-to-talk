@@ -4,6 +4,7 @@
     <!-- <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <meta http-equiv="refresh" content="5; url = https://www.meet.google.com/new/" /> -->
     
     {% load static %}
     <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
@@ -11,9 +12,11 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/event_list.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/event_detail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
 
 
-    {% block title %}<title>Home</title> {% endblock title %}
+    {% block title %}<title id="title">Home</title> {% endblock title %}
 
 </head>
 <body>
@@ -39,7 +42,7 @@
         <h1>Welcome to Sansans To Talk</h1>
 
         {% if request.user.is_authenticated %}
-            <div class="home">
+            <div class="homeAuthenticated">
                 <div>
                     <a id="home-btn_1" href="{% url 'event_list' %}">Event List</a>
                     <a id="home-btn_2" href="{% url 'event_create' %}">Create Event</a>
@@ -47,7 +50,13 @@
             </div>
 
         {% else %}
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod consectetur quis repudiandae vero vitae eveniet. Maiores quia nisi minima saepe quam minus rerum, porro eveniet ullam quae, harum ducimus delectus.</p>
+            <div class="homeUnAuthenticated">
+                <div>
+                    <h3>What is Sansans To Talk</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam nostrum velit ipsum animi repellat corporis ad vitae iure earum esse praesentium, obcaecati ullam enim eius quaerat, quasi molestiae doloremque quam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem laborum sit ipsa, eos minima cupiditate culpa. Minus labore pariatur perspiciatis odio sed officiis nisi! Minima esse corrupti mollitia <quas class="lore"></quas></p>
+
+                </div>
+            </div>
         
         {% endif %}
 

@@ -1,0 +1,18 @@
+{% extends '../index.html'%}
+{% block title %} <title>{{ events.event_name }}</title> {% endblock %}
+
+{% block body %}
+    <div class="title">
+        <h1 class="title-main">{{ events.event_name }}</h1>
+        <a id="meeting" href="https://meet.google.com/new/" target="_blanck">Start Meeting</a>
+    </div>
+    <div>
+    </div>
+    <div class="event">
+        <ul>
+            <li>{{ events.event_description }}</li>
+            <li>{{ events.event_date }}</li>
+            <li>{{ events.event_time }}</li>
+        </ul>
+    </div>
+{% endblock %}
