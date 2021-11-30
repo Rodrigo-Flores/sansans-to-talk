@@ -5,14 +5,6 @@
   text-align: center;
 }
 
-.title main {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-  width: max-content;
-
-}
-
 #events {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -57,8 +49,6 @@
   cursor: pointer;
   float: right;
   font-weight: bold;
-  margin-top: -4em;
-  margin-right: 10em;
 }
 
 #options {

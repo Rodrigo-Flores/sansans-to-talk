@@ -21,26 +21,31 @@
 </head>
 <body>
     {% block nav %}
-        <div class="topnav">
-            {% block nav-home %}<a class="active" href="{% url 'home' %}">Home</a>{% endblock %}
+        <header>
+            <ul>
+                {% block nav-home %}<li><a class="active" href="{% url 'home' %}">Home</a></li>{% endblock %}
 
-            {% if request.user.is_authenticated %}
-                {% block nav-profile %}<a id="topnav-profile" href="{% url 'profile' user.username %}">Profile</a>{% endblock %}
-                {% block nav-about %}<a href="{% url 'event_list' %}">Event List</a>{% endblock %}
-                {% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}
+                {% if request.user.is_authenticated %}
+                {% block nav-about %}<li><a href="{% url 'event_list' %}">Event List</a></li>{% endblock %}
+                {% block nav-logout %}<li><a href="{% url 'logout' %}">Logout</a></li>{% endblock %}
+                {% block nav-profile %}<li><a href="{% url 'profile' user.username %}">Profile</a></li>{% endblock %}
+                
+                {% else %}
+                    {% block nav-login %}<li><a href="{% url 'login' %}">Sign In</li>{% endblock %}
+                    {% block nav-contact %}<li><a href="{% url 'register' %}">Sign Up</a></li>{% endblock %}
 
-            {% else %}
-                {% block nav-login %}<a href="{% url 'login' %}">Sign In</a>{% endblock %}
-                {% block nav-contact %}<a href="{% url 'register' %}">Sign Up</a>{% endblock %}
-
-            {% endif %}
-            <!-- <li>{% block nav-create %}<a href="{% url 'event_create' %}">Create Event</a>{% endblock %}</li> -->
-        </div>
+                {% endif %}
+                <!-- <li>{% block nav-create %}<a href="{% url 'event_create' %}">Create Event</a>{% endblock %}</li> -->
+            </ul>
+        </header>
     {% endblock %}
+    <div class="container">
     {% block body %}
-    
-        <h1>Welcome to Sansans To Talk</h1>
-
+        <div class="feature">
+            <di class="feature-heading">
+                <h1>Welcome to Sansans To Talk</h1>
+            </di>
+        </div>
         {% if request.user.is_authenticated %}
             <div class="homeAuthenticated">
                 <div>
@@ -51,7 +56,7 @@
 
         {% else %}
             <div class="homeUnAuthenticated">
-                <div>
+                <div class="homeUnAuthenticated-content">
                     <h3>What is Sansans To Talk</h3>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam nostrum velit ipsum animi repellat corporis ad vitae iure earum esse praesentium, obcaecati ullam enim eius quaerat, quasi molestiae doloremque quam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem laborum sit ipsa, eos minima cupiditate culpa. Minus labore pariatur perspiciatis odio sed officiis nisi! Minima esse corrupti mollitia <quas class="lore"></quas></p>
 
@@ -59,8 +64,8 @@
             </div>
         
         {% endif %}
-
     {% endblock %}
+    </div>
 
 </body>
 </html>

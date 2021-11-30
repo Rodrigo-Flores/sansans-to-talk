@@ -3,6 +3,7 @@
   font-weight: bold;
   margin-bottom: 0.5em;
   text-align: center;
+  z-index: 1;
 }
 
 .title main {
