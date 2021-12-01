@@ -1,10 +1,9 @@
-{% extends '../index.html'%}
-{% block title %}<title>Manage Event</title>{% endblock title %}
-{% block body %}
+{% extends '../index.html'%} {% block title %}
+<title>Manage Event</title>{% endblock title %} {% block body %} {% block styles %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/manage_event.css' %}"> {% endblock styles %}
 
 <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+    {% csrf_token %} {{ form.as_p }}
     <button type="submit">
         CREATE OR EDIT
     </button>

@@ -1,154 +1,157 @@
 @font-face {
-  src: url("./../fonts/brandon/Brandon_med.otf") format("opentype");
-  font-family: "Brandon Medium";
+    src: url("./../fonts/brandon/Brandon_med.otf") format("opentype");
+    font-family: "Brandon Medium";
 }
 
 @font-face {
-  src: url("./../fonts/brandon/Brandon_reg.otf") format("opentype");
-  font-family: "Brandon Regular";
+    src: url("./../fonts/brandon/Brandon_reg.otf") format("opentype");
+    font-family: "Brandon Regular";
 }
 
 @font-face {
-  src: url("./../fonts/brandon/Brandon_bold.otf") format("opentype");
-  font-family: "Brandon Bold";
+    src: url("./../fonts/brandon/Brandon_bold.otf") format("opentype");
+    font-family: "Brandon Bold";
 }
 
 @font-face {
-  src: url("./../fonts/brandon/Brandon_light.otf") format("opentype");
-  font-family: "Brandon Light";
+    src: url("./../fonts/brandon/Brandon_light.otf") format("opentype");
+    font-family: "Brandon Light";
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0%;
-  margin: 0%;
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
 }
 
 body {
-  background-color: #f2f2f2;
-  margin: 0 auto;
+    background-color: #f2f2f2;
+    margin: 0 auto;
 }
 
 header {
-  background-color: rgba(0, 0, 0, 0.85);
-  position: fixed;
-  width: 100%;
-  z-index: 10;
+    background-color: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    border-bottom: 0.1px solid whitesmoke;
 }
 
+
 /* Style the links inside the navigation bar */
+
 header ul {
-  border-bottom: 2px  black;
-  margin: 1px auto;
-  padding: 1px auto;
-  text-align: right;
+    border-bottom: 2px black;
+    margin: 1px auto;
+    padding: 1px auto;
+    text-align: right;
 }
 
 header li {
-  display: inline-block;
-  text-decoration: none;
-  padding: 14px 16px;
-  font-weight: 400;
-  font-size: 1.2em;
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 16px;
+    font-weight: 400;
+    font-size: 1.2em;
 }
 
 header a {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 
 header a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  border-radius: 10%;
-  padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 10%;
+    padding: 5px;
 }
 
 .container {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0%;
-  margin: 0%;
-  text-align: center;
-  position: relative;
-  top: 3em;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+    text-align: center;
+    position: relative;
+    top: 3em;
 }
 
 .feature {
-  background-image: url("./../media/background3.jpg");
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:center;
-  padding: 20%;
-  position: relative;
-  z-index: -1;
+    background-image: url("./../media/background3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20%;
+    position: relative;
+    z-index: -1;
 }
 
 .feature h1 {
-  font-family: "Brandon Light";
-  text-transform: uppercase;
-  box-sizing: border-box;
-  text-align: start;
-  position: relative;
-  margin: 0;
-  font-size: 2.5em;
-  color: white;
-  bottom: -2.5em;
+    font-family: "Brandon Light";
+    text-transform: uppercase;
+    box-sizing: border-box;
+    text-align: start;
+    position: relative;
+    margin: 0;
+    font-size: 2.5em;
+    color: white;
+    bottom: -2.5em;
 }
 
 .homeAuthenticated {
-  margin: auto;
-  width: 100%;
+    margin: auto;
+    width: 100%;
 }
 
 .homeUnAuthenticated {
-  background-image: url("./../media/background6.jpg");
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:center;
-  filter: brightness(0.7);
-  z-index: -1;
-  padding: 20%;
+    background-image: url("./../media/background6.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+    z-index: -1;
+    padding: 20%;
 }
 
 .homeUnAuthenticated-content {
-  font-family: "Brandon Regular";
-  font-size: 2em;
-  text-align: justify;
-  position: relative;
-  margin: auto;
-  width: 100%;
-  color: white;
+    font-family: "Brandon Regular";
+    font-size: 2em;
+    text-align: justify;
+    position: relative;
+    margin: auto;
+    width: 100%;
+    color: white;
 }
 
 .homeAuthenticated {
-  background-image: url("./../media/background6.jpg");
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:center;
-  filter: brightness(0.7);
-  z-index: -1;
-  padding: 20%;
+    background-image: url("./../media/background6.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+    z-index: -1;
+    padding: 20%;
 }
 
 .homeAuthenticated-content {
-  font-family: "Brandon Regular";
-  font-size: 2em;
-  text-align: justify;
-  position: relative;
-  margin: auto;
-  width: 100%;
-  color: white;
+    font-family: "Brandon Regular";
+    font-size: 2em;
+    text-align: justify;
+    position: relative;
+    margin: auto;
+    width: 100%;
+    color: white;
 }
 
 #home-btn_1,
 #home-btn_2 {
-  font-family: "Brandon Light";
-  display: inline-block;
-  text-decoration: none;
-  color: white;
-  padding: 14px 16px;
-  font-weight: 400;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10%;
+    font-family: "Brandon Light";
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 14px 16px;
+    font-weight: 400;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10%;
 }
