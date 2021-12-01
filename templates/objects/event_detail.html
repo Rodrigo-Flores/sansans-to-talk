@@ -1,6 +1,11 @@
 {% extends '../index.html'%}
 {% block title %} <title>{{ events.event_name }}</title> {% endblock %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/event_detail.css' %}">
+{% endblock styles %}
+
 {% block body %}
     <div class="title">
         <h1 class="title-main">{{ events.event_name }}</h1>

@@ -1,6 +1,11 @@
 {% extends '../index.html'%}
 {% block title %} <title>{{ user.username }}</title> {% endblock %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+{% endblock styles %}
+
 {% block body %}
     <div class="title">
         <h1 class="title-main">Hello {{ user.username }}. This is your data.</h1>

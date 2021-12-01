@@ -11,9 +11,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"> -->
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/event_list.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/event_list.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/event_detail.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}"> -->
+
+    {% block styles %}
+    {% endblock %}
 
 
     {% block title %}<title id="title">Home</title> {% endblock title %}
@@ -48,7 +51,7 @@
         </div>
         {% if request.user.is_authenticated %}
             <div class="homeAuthenticated">
-                <div>
+                <div class="homeAuthenticated-content">
                     <a id="home-btn_1" href="{% url 'event_list' %}">Event List</a>
                     <a id="home-btn_2" href="{% url 'event_create' %}">Create Event</a>
                 </div>

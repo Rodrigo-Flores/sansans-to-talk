@@ -1,15 +1,21 @@
 {% extends '../index.html'%}
 {% block title %}<title>Create Profile</title>{% endblock title %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+{% endblock styles %}
+
 {% block body %}
+    <div class="container">
+        <h1>Create Profile</h1>
+        <form class="form" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
 
-<form class="form" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
+            <button type="submit" class="btn btn-primary">Register</button>
 
-    <button type="submit" class="btn btn-primary">Register</button>
-
-</form>
-
+        </form>
+    </div>
 
 {% endblock body %}

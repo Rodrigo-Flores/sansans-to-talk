@@ -121,7 +121,34 @@ header a:hover {
   color: white;
 }
 
+.homeAuthenticated {
+  background-image: url("./../media/background6.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  filter: brightness(0.7);
+  z-index: -1;
+  padding: 20%;
+}
+
+.homeAuthenticated-content {
+  font-family: "Brandon Regular";
+  font-size: 2em;
+  text-align: justify;
+  position: relative;
+  margin: auto;
+  width: 100%;
+  color: white;
+}
+
 #home-btn_1,
 #home-btn_2 {
+  font-family: "Brandon Light";
   display: inline-block;
+  text-decoration: none;
+  color: white;
+  padding: 14px 16px;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10%;
 }
