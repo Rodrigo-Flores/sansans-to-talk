@@ -2,11 +2,11 @@
 <title>Manage Event</title>{% endblock title %} {% block body %} {% block styles %} {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/manage_event.css' %}"> {% endblock styles %}
 
+<h1>Manage Event</h1>
+
 <form method="post">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit">
-        CREATE OR EDIT
-    </button>
+    <button type="submit"> Create/edit </button>
 </form>
 
 {% endblock body %}

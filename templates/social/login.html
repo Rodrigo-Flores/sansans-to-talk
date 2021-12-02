@@ -7,14 +7,12 @@
 {% endblock styles %}
 
 {% block body %}
-    <div class="container">
-        <h1>Login</h1>
-        <form class="form" method="post">
-            {% csrf_token %}
-            {{form.as_p}}
+    <h1>Login</h1>
+    <form class="form" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
 
-            <button type="submit" class="btn btn-primary">Sign In</button>
+        <button type="submit" class="btn btn-primary">Sign In</button>
 
-        </form>
-    </div>
+    </form>
 {% endblock body %}
