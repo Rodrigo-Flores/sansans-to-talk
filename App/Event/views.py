@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Events
+from .models import Events, Attendance
 from .forms import EventForm, UserRegistrationForm
 
 def Home(request):
@@ -15,9 +15,11 @@ def Home(request):
 #! Events views
 @login_required
 def EventList(request):
+    current_user = request.GET.get('user')
     events = Events.objects.all()
     context = {
-        'events':events
+        'events':events,
+        'current_user':current_user
     }
 
     return render(request, 'objects/event_list.html', context)
@@ -96,3 +98,17 @@ def profile(request, username=None):
     else:
         user = current_user
     return render(request, 'social/profile.html', {'user':user, 'events':events})
+
+#! Attendance views
+@login_required
+def AttendEvent(request, event_id):
+    if request.method == 'GET':
+        event = request.POST['event_id']
+        user = request.POST['user']
+        value = request.POST['value']
+
+        if value == 'attend':
+            attendance = Attendance.objects.create(event=event, user=user)
+            attendance.save()
+
+        return redirect('event_detail', event_id=event_id)

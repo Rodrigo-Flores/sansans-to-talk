@@ -40,3 +40,21 @@ class UserRegistrationForm(UserCreationForm):
         error_messages = {
             'password_mismatch': "The two password fields didn't match.",
         }
+
+
+class AttendanceForm(forms.Form):
+    event_id = forms.IntegerField(widget=forms.HiddenInput())
+    user_id = forms.IntegerField(widget=forms.HiddenInput())
+    attendance = forms.BooleanField(required=False)
+    attendance_time = forms.TimeField(widget=forms.HiddenInput())
+    attendance_date = forms.DateField(widget=forms.HiddenInput())
+    class Meta:
+        fields = ['event_id', 'user_id', 'attendance', 'attendance_time', 'attendance_date']
+        help_texts = {i : '' for i in fields}
+        widgets = {
+            'event_id': forms.HiddenInput(),
+            'user_id': forms.HiddenInput(),
+            'attendance': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'attendance_time': forms.HiddenInput(),
+            'attendance_date': forms.HiddenInput(),
+        } 
