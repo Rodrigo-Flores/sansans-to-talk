@@ -18,3 +18,10 @@ class UserProfile(models.Model):
     email = models.EmailField(max_length=100, default='')
 
     __str__ = lambda self: self.user.username
+
+class Attendance(models.Model):
+    event = models.ForeignKey(Events, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
+    __str__ = lambda self: self.user.username
