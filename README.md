@@ -2,7 +2,7 @@
 
 ## Repository's installation
 ```
-git clone https://github.com/Rodrigo-Flores/STT.git > clonning reposotiry
+git clone https://github.com/Rodrigo-Flores/STT.git > clonning repository
 git fetch > downloading metadata
 git checkout master > moving to master branch
 git branch > check where branch you are
