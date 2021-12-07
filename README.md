@@ -5,7 +5,7 @@
 git clone https://github.com/Rodrigo-Flores/STT.git > clonning reposotiry
 git fetch > downloading metadata
 git checkout master > moving to master branch
-git brnach > check where branch you are
+git branch > check where branch you are
 ```
 
 ## Download new changes
