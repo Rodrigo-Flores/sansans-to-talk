@@ -23,6 +23,7 @@ def EventList(request):
     }
 
     return render(request, 'objects/event_list.html', context)
+
 @login_required
 def EventCreate(request):
     if request.method == 'GET':
@@ -101,19 +102,25 @@ def profile(request, username=None):
 
 #! Attendance views
 @login_required
-def AttendEvent(request):
+def AttendEvent(request, event_id):
+    events = Events.objects.get(event_id=event_id)
     if request.method == 'POST':
         event_id = request.POST['event_id']
         user = request.POST['user']
         value = request.POST['value']
+        print("UUUUUUUUUUUUUUUUUUUUUUU")
 
         if value == 'attend':
-            attendance = Attendance.objects.create(event_id=event_id, user=user)
+            attendance = Attendance.objects.create() # Create a new attendance without data
             attendance.save()
             print("AAAAAAAAAAAAAAAAAAAAAAAAAAA")
 
-        print("FUUUUUUUUUUUUUCK")
-        return redirect('event_list')
+        print("EEEEEEEEEEEEEE")
+        return render(request, 'objects/event_detail.html', {'events':events})
 
-    print("EEEEEEEEEEEEEEEE")
-    return redirect('event_list', request.user)
+    elif request.method == 'GET':
+        print("GGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
+        return render(request, 'objects/attendance_confirmation.html', {'events':events})
+
+    print("IIIIIIIIIIIIIIII")
+    return render(request, 'objects/attendance_confirmation.html', {'events':events})

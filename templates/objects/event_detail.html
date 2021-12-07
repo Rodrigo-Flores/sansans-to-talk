@@ -12,14 +12,13 @@
         <a id="meeting" href="https://meet.google.com/new/" target="_blanck">Start Meeting</a>
     </div>
     <div class="attendace">
-        <form action="{% url 'attendance' %}" method="post">
+        <form method="get">
             {% csrf_token %}
             <input type="hidden" name="user" value="{{ current_user }}">
             <input type="hidden" name="event_id" value="{{ events.event_id }}">
             <!-- <input type="hidden" name="value" value="attend" readonly>  -->
-            <button type="submit" name="attend" value="attend">
-                Attend
-            </button>
+            <!-- <button type="submit" name="attend" value="attend">Attend</button> -->
+            <a href="{% url 'attendance' events.event_id %}" type="submit">Attend</a>
         </form>
     </div>
     <div class="event">

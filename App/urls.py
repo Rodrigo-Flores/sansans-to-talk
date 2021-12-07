@@ -37,5 +37,5 @@ urlpatterns = [
     path('profile/<str:username>', profile, name='profile'),
 
     #! Attendace views
-    path('events/', AttendEvent, name='attendance'),
+    path('attendance_confirmation/<str:event_id>', AttendEvent, name='attendance'),
 ]
