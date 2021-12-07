@@ -101,14 +101,19 @@ def profile(request, username=None):
 
 #! Attendance views
 @login_required
-def AttendEvent(request, event_id):
-    if request.method == 'GET':
-        event = request.POST['event_id']
+def AttendEvent(request):
+    if request.method == 'POST':
+        event_id = request.POST['event_id']
         user = request.POST['user']
         value = request.POST['value']
 
         if value == 'attend':
-            attendance = Attendance.objects.create(event=event, user=user)
+            attendance = Attendance.objects.create(event_id=event_id, user=user)
             attendance.save()
+            print("AAAAAAAAAAAAAAAAAAAAAAAAAAA")
 
-        return redirect('event_detail', event_id=event_id)
+        print("FUUUUUUUUUUUUUCK")
+        return redirect('event_list')
+
+    print("EEEEEEEEEEEEEEEE")
+    return redirect('event_list', request.user)

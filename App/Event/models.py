@@ -25,4 +25,4 @@ class Attendance(models.Model):
     event = models.CharField(max_length=1000)
     user = models.CharField(max_length=1000)
 
-    __str__ = lambda self: self.user.username
+    __str__ = lambda self: self.user
