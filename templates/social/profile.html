@@ -1,13 +1,19 @@
 {% extends '../index.html'%}
 {% block title %} <title>{{ user.username }}</title> {% endblock %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+{% endblock styles %}
+
 {% block body %}
     <div class="title">
-        <h1 class="title-main">Hello {{ user.username }}. This is your data.</h1>
-        <a id="meeting" href="https://meet.google.com/new/" target="_blanck">Start Event</a>
+        <h1 class="title-main">Welcome {{ user.username }}</h1>
+        <!-- <a id="meeting" href="https://meet.google.com/new/" target="_blanck">Start Event</a> -->
     </div>
 
     <div class="profile">
+        <h2>Your Identification</h2>
         <table>
             <tr>
               <th>Name:</th>
@@ -28,7 +34,7 @@
           </table>
     </div>
 
-    <div>
+    <div class="ur-events">
         <h2>Your Events</h2>
         <table>
             <tr>

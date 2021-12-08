@@ -1,15 +1,18 @@
 {% extends '../index.html'%}
 {% block title %}<title>Login</title>{% endblock title %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock styles %}
+
 {% block body %}
+    <h1>Login</h1>
+    <form class="form" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
 
-<form class="form" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Sign In</button>
 
-    <button type="submit" class="btn btn-primary">Sign In</button>
-
-</form>
-
-
+    </form>
 {% endblock body %}

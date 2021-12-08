@@ -1,33 +1,35 @@
-{% extends '../index.html'%}
-{% block title %}<title>Event List</title>{% endblock title %}
-{% block body %}
-    <div class="title">
-        <h1 class="title-main">Even List</h1>
-        <a id="events-new" href="{% url 'event_create' %}">NEW</a>
-    </div>
+{% extends '../index.html'%} {% block title %}
+<title>Event List</title>{% endblock title %} {% block styles %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/event_list.css' %}"> {% endblock styles %} {% block body %}
+<div class="title">
+    <h1 class="title-main">EVENT LIST</h1>
+    <a id="events-new" href="{% url 'event_create' %}">New</a>
+</div>
+<div class="table">
     <table id="events">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <!-- <th>Description</th> -->
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th id="options">OPTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for event in events %}
-                <tr>
-                    <td>{{ event.event_name }}</td>
-                    <!-- <td>{{ event.event_description }}</td> -->
-                    <td>{{ event.event_date }}</td>
-                    <td>{{ event.event_time }}</td>
-                    <td id="options">
-                        <a id="options-btn" href="{% url 'event_detail' event.event_id %}">Details</a>
-                        <a id="options-btn" href="{% url 'event_update' event.event_id %}">Edit</a>
-                        <a id="options-btn" href="{% url 'event_delete' event.event_id %}">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-        </table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <!-- <th>Description</th> -->
+                <th>Date</th>
+                <th>Time</th>
+                <th id="options">Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.event_name }}</td>
+                <!-- <td>{{ event.event_description }}</td> -->
+                <td>{{ event.event_date }}</td>
+                <td>{{ event.event_time }}</td>
+                <td id="options">
+                    <a id="options-btn" href="{% url 'event_detail' event.event_id %}">Details</a>
+                    <a id="options-btn" href="{% url 'event_update' event.event_id %}">Edit</a>
+                    <a id="delete-btn" href="{% url 'event_delete' event.event_id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
 {% endblock body%}

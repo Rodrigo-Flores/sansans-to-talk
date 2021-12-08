@@ -1,5 +1,9 @@
 {% extends 'index.html' %}
 {% block title %}<title>Delete Confirmation</title>{% endblock title %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/event_delete.css' %}">
+{% endblock styles %}
 
 {% block body %}
 <form method="post">
