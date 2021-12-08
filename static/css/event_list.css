@@ -92,7 +92,18 @@ body {
 }
 
 #options-btn {
-  background-color: #8d0404;
+  background-color: #043f8d;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  display: inline;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 5px;
+  line-height: 2em;
+}
+
+#delete-btn {
+  background-color: rgb(177, 42, 42);
   text-decoration: none;
   color: rgb(255, 255, 255);
   display: inline;

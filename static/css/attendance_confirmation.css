@@ -1,0 +1,121 @@
+@font-face {
+    src: url("./../fonts/brandon/Brandon_med.otf") format("opentype");
+    font-family: "Brandon Medium";
+}
+
+@font-face {
+    src: url("./../fonts/brandon/Brandon_reg.otf") format("opentype");
+    font-family: "Brandon Regular";
+}
+
+@font-face {
+    src: url("./../fonts/brandon/Brandon_bold.otf") format("opentype");
+    font-family: "Brandon Bold";
+}
+
+@font-face {
+    src: url("./../fonts/brandon/Brandon_light.otf") format("opentype");
+    font-family: "Brandon Light";
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url("./../media/background8.jpg");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container p {
+    font-family: "Brandon Medium";
+    font-size: 1.5em;
+    line-height: 2.5em;
+    text-align: left;
+    color: white;
+    display: block;
+    margin: 0;
+}
+
+.container button {
+    font-family: "Brandon Medium";
+    font-size: 1.25em;
+    padding: 0.2em;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 0.5em;
+}
+
+.container button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white
+}
+
+.container h1 {
+    font-family: "Brandon Light";
+    /* text-transform: uppercase; */
+    text-align: center;
+    color: white;
+    font-size: 3em;
+    margin-top: 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 5vh;
+}
+
+.container input {
+    font-family: "Brandon Regular";
+    text-align: justify;
+    font-size: 0.8em;
+    font-style: italic;
+    color: rgba(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
+    margin: auto 2em;
+    float: right;
+    margin-top: 13px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.container label {
+    padding: 0;
+}
+
+.container ul {
+    display: none;
+}
+
+.container .helptext {
+    display: none;
+}
+
+.container form {
+    background-color: rgba(4, 0, 255, 0.3);
+    border-radius: 1.5%;
+    padding: 1em;
+    width: 50%;
+    margin: 15% 0;
+    text-align: center;
+}
+
+#id_event_description {
+    /*edit a text form */
+    font-family: "Brandon Regular";
+    font-size: 1.2em;
+    color: white;
+    background-color: rgba(146, 135, 245, 0.1);
+    width: 80%;
+    display: block;
+    margin-bottom: auto;
+    height: 5em;
+    min-height: 5em;
+    min-width: 10em;
+    max-height: max-content;
+    max-width: 22.3em;
+}

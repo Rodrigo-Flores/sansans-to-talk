@@ -26,7 +26,7 @@
                 <td id="options">
                     <a id="options-btn" href="{% url 'event_detail' event.event_id %}">Details</a>
                     <a id="options-btn" href="{% url 'event_update' event.event_id %}">Edit</a>
-                    <a id="options-btn" href="{% url 'event_delete' event.event_id %}">Delete</a>
+                    <a id="delete-btn" href="{% url 'event_delete' event.event_id %}">Delete</a>
                 </td>
             </tr>
             {% endfor %}

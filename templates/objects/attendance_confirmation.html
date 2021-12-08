@@ -1,6 +1,10 @@
 {% extends 'index.html' %}
 {% block title %}<title>Delete Confirmation</title>{% endblock title %}
 
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/attendance_confirmation.css' %}">
+{% endblock styles %}
+
 {% block body %}
 <form method="post">
     {% csrf_token %}
