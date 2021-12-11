@@ -22,7 +22,7 @@ class UserProfile(models.Model):
 class Attendance(models.Model):
     # event = models.ForeignKey(Events, on_delete=models.CASCADE)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event = models.CharField(max_length=1000)
-    user = models.CharField(max_length=1000)
+    event = models.CharField(unique=True, max_length=1000)
+    user = models.CharField(unique=True, max_length=1000)
 
     __str__ = lambda self: self.user

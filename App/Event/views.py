@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Events, Attendance
-from .forms import EventForm, UserRegistrationForm
+from .forms import EventForm, UserRegistrationForm, AttendanceForm
 
 def Home(request):
     events = Events.objects.all()
@@ -103,24 +103,23 @@ def profile(request, username=None):
 #! Attendance views
 @login_required
 def AttendEvent(request, event_id):
+    # events = Events.objects.get(event_id=event_id)
     events = Events.objects.get(event_id=event_id)
     if request.method == 'POST':
-        event_id = request.POST['event_id']
-        user = request.POST['user']
+        event = request.POST['event_id']
+        user = request.user
         value = request.POST['value']
-        print("UUUUUUUUUUUUUUUUUUUUUUU")
 
         if value == 'attend':
-            attendance = Attendance.objects.create() # Create a new attendance without data
-            attendance.save()
-            print("AAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            attendance = Attendance(event=event, user=user) # Create a new attendance without data
+            try:
+                attendance.save()
+            except:
+                return redirect('event_list')
 
-        print("EEEEEEEEEEEEEE")
         return render(request, 'objects/event_detail.html', {'events':events})
 
     elif request.method == 'GET':
-        print("GGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
         return render(request, 'objects/attendance_confirmation.html', {'events':events})
 
-    print("IIIIIIIIIIIIIIII")
     return render(request, 'objects/attendance_confirmation.html', {'events':events})
