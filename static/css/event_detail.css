@@ -41,16 +41,14 @@ body {
   width: max-content;
   text-align: center;
   color: rgb(255, 255, 255);
-
 }
 
 .title .but_start {
   font-size: 2em;
-  margin-top: 10em;
+  margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
   color: rgb(255, 255, 255);
-  
 }
 
 .meeting {
@@ -58,7 +56,7 @@ body {
   color: white;
   text-align: center;
   text-decoration: none;
-  display: flexbox;
+  display: block;
   font-size: 16px;
   cursor: pointer;
   float: right;
@@ -72,7 +70,7 @@ body {
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.2);
   color: black;
-  margin: 0 auto;
+  margin: 0 auto 15vh auto;
   color: rgb(255, 255, 255);
   font-size: 7vh;
   padding: 1.5vh;
@@ -84,19 +82,64 @@ body {
   padding: 1.5vh;
 }
 
-.attendance a {
+.attendance form {
+  background-color: #ff3333;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  padding: 0.5em;
+  margin-top: 1vh;
+}
+
+/* .attendance a {
   color: rgb(255, 255, 255);
   text-decoration: none;
   background-color: rgba(255, 255, 255, 0.3);
   padding: 2vh;
   margin: 15vh;
+} */
+
+/* .attendance form {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 2vh;
+  margin: 15vh;
+} */
+
+#attendance-btn {
+  color: rgb(0, 255, 242);
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 2vh;
+  margin: 0 25%;
+  float: right;
 }
 
-.attendance form {
-  margin: 5vh;
+#attendance-btn:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2vh;
+  margin: 0 25%;
+  float: right;
 }
 
-.title h1{
+.event {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  width: 50%;
+  margin: 0 auto;
+  padding: 2vh;
+  margin-top: 2vh;
+}
+
+.title h1 {
   font-family: "Brandon Medium";
   font-size: 2.5em;
   text-align: center;
@@ -104,21 +147,19 @@ body {
   color: rgb(255, 255, 255);
 }
 
-.event {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2vh;
-  margin: 2vh;
-  border-radius: 6px;
-  width: 50%;
-  margin: 0 auto;
-}
 
 .event ul {
   font-family: "Brand Medium";
   align-content: left;
   text-align: left;
   width: 50%;
-  margin: 3vh auto;
+  margin: 5vh auto;
   color: rgb(255, 255, 255);
+  max-width: max-content;
+}
 
+.event li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }
