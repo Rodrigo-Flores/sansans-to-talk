@@ -4,8 +4,8 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Events
-from .forms import EventForm, UserRegistrationForm
+from .models import Events, Attendance
+from .forms import EventForm, UserRegistrationForm, AttendanceForm
 
 def Home(request):
     events = Events.objects.all()
@@ -15,12 +15,15 @@ def Home(request):
 #! Events views
 @login_required
 def EventList(request):
+    current_user = request.GET.get('user')
     events = Events.objects.all()
     context = {
-        'events':events
+        'events':events,
+        'current_user':current_user
     }
 
     return render(request, 'objects/event_list.html', context)
+
 @login_required
 def EventCreate(request):
     if request.method == 'GET':
@@ -96,3 +99,27 @@ def profile(request, username=None):
     else:
         user = current_user
     return render(request, 'social/profile.html', {'user':user, 'events':events})
+
+#! Attendance views
+@login_required
+def AttendEvent(request, event_id):
+    # events = Events.objects.get(event_id=event_id)
+    events = Events.objects.get(event_id=event_id)
+    if request.method == 'POST':
+        event = request.POST['event_id']
+        user = request.user
+        value = request.POST['value']
+
+        if value == 'attend':
+            attendance = Attendance(event=event, user=user) # Create a new attendance without data
+            try:
+                attendance.save()
+            except:
+                return redirect('event_list')
+
+        return render(request, 'objects/event_detail.html', {'events':events})
+
+    elif request.method == 'GET':
+        return render(request, 'objects/attendance_confirmation.html', {'events':events})
+
+    return render(request, 'objects/attendance_confirmation.html', {'events':events})

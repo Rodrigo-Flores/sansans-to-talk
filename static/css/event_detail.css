@@ -1,22 +1,23 @@
-.title {
+/* .title {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 0.5em;
   text-align: center;
-}
+  z-index: 1;
+} */
 
 .title main {
   font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 0.5em;
   width: max-content;
+  text-align: center;
 
 }
 
-#meeting {
+.meeting {
   background-color: #ff3333;
   color: white;
-  padding: 1em 1em;
   text-align: center;
   text-decoration: none;
   display: flexbox;
@@ -24,6 +25,6 @@
   cursor: pointer;
   float: right;
   font-weight: bold;
-  margin-top: -4em;
-  margin-right: 10em;
+  padding: 0.5em;
+  margin: 0.5em 0.5em;
 }

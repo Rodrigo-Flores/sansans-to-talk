@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block title %}<title>Attend Confirmation</title>{% endblock title %}
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+    <h1>Are you sure you want attend "{{ events.event_name }}"?</h1>
+    <input type="hidden" name="user" value="{{ current_user }}">
+    <input type="hidden" name="event_id" value="{{ events.event_id }}">
+    <input type="hidden" name="value" value="attend" readonly> 
+
+    <button type="submit" name="button">Confirm</button>
+
+    <a href="{% url 'event_list' %}">Cancel</a>
+</form>
+{% endblock body %}
